@@ -2,10 +2,11 @@ import {
   createRouter,
   createWebHashHistory
 } from 'vue-router'
+
 const routes = [
   {
     path: '/',
-    component: () => import('../App.vue')
+    component: () => import('@/components/A')
   }
 ]
 
