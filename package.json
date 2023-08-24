@@ -12,10 +12,16 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "@unocss/preset-attributify": "^0.55.2",
     "@unocss/preset-uno": "^0.55.2",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "eslint": "^8.47.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "3.0.2",
     "typescript": "^5.0.2",
     "unocss": "^0.55.2",
     "vite": "^4.4.5",
