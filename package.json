@@ -21,10 +21,14 @@
     "eslint": "^8.47.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.17.0",
+    "jsdom": "^22.1.0",
     "prettier": "3.0.2",
     "typescript": "^5.0.2",
     "unocss": "^0.55.2",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.5",
+    "vitest": "^0.34.2",
     "vue-router": "^4.2.4",
     "vue-tsc": "^1.8.5"
   }
