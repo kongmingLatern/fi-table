@@ -8,7 +8,7 @@ export default () => {
     height: 64,
     paddingInline: 50,
     lineHeight: '64px',
-    backgroundColor: '#7dbcea'
+    backgroundColor: '#001529'
   }
 
   const contentStyle: CSSProperties = {
@@ -41,15 +41,38 @@ export default () => {
             text="20px"
             align={'center'}
             font="semibold"
+            bg="transparent"
           >
-            <span flex="center">
-              <Icon icon="logos:amp-icon" />
-              Mysql Manager
+            <span class="flex-center justify-start">
+              <Icon
+                icon="logos:nuxt-icon"
+                class={'mr-2'}
+                width={25}
+                height={25}
+                color="white"
+              />
+              <span>Mysql Manager</span>
             </span>
           </a-col>
           <a-col span="6"></a-col>
           <a-col span="6"></a-col>
-          <a-col span="6">col-6</a-col>
+          <a-col span="6">
+            <a-space>
+              <a-avatar
+                v-slots={{
+                  icon: () => (
+                    <Icon
+                      icon="bxs:user"
+                      class={'mr-2'}
+                      width={25}
+                      height={25}
+                      color="white"
+                    />
+                  )
+                }}
+              ></a-avatar>
+            </a-space>
+          </a-col>
         </a-row>
       </a-layout-header>
       <a-layout>
