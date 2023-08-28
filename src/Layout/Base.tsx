@@ -56,7 +56,7 @@ export default () => {
           </a-col>
           <a-col span="6"></a-col>
           <a-col span="6"></a-col>
-          <a-col span="6">
+          <a-col span="6" class="text-right">
             <a-space>
               <a-avatar
                 v-slots={{
@@ -71,6 +71,10 @@ export default () => {
                   )
                 }}
               ></a-avatar>
+
+              <span class={'font-semibold mr-2'}>Admin</span>
+
+              <a-button>退出登陆</a-button>
             </a-space>
           </a-col>
         </a-row>
