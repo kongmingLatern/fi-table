@@ -1,36 +1,44 @@
 import type { CSSProperties } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useMenu } from '@/store/menu'
 import Menu from './common/Menu'
 
+const headerStyle: CSSProperties = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  textAlign: 'center',
+  color: '#fff',
+  height: 64,
+  paddingInline: 50,
+  backgroundColor: '#001529',
+  zIndex: 10
+}
+
+const contentStyle: CSSProperties = {
+  textAlign: 'center',
+  minHeight: 120,
+  lineHeight: '120px',
+  color: '#fff',
+  backgroundColor: '#108ee9'
+}
+
+const siderStyle: CSSProperties = {
+  textAlign: 'center',
+  minHeight: '100vh',
+  color: '#fff',
+  backgroundColor: '#3ba0e9'
+}
+const state = reactive({
+  collapsed: false,
+  selectedKeys: ['1'],
+  openKeys: ['sub1'],
+  preOpenKeys: ['sub1']
+})
+
 export default () => {
-  const headerStyle: CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    textAlign: 'center',
-    color: '#fff',
-    height: 64,
-    paddingInline: 50,
-    backgroundColor: '#001529',
-    zIndex: 10
-  }
-
-  const contentStyle: CSSProperties = {
-    textAlign: 'center',
-    minHeight: 120,
-    lineHeight: '120px',
-    color: '#fff',
-    backgroundColor: '#108ee9'
-  }
-
-  const siderStyle: CSSProperties = {
-    textAlign: 'center',
-    minHeight: '100vh',
-    color: '#fff',
-    backgroundColor: '#3ba0e9'
-  }
-
+  const { items } = useMenu(state)
   return (
     <a-layout>
       <a-layout-header style={headerStyle}>
@@ -81,9 +89,13 @@ export default () => {
         </a-row>
       </a-layout-header>
       <a-layout class={'mt-64px'}>
-        <a-layout-sider style={siderStyle}>
+        <a-layout-sider
+          v-model:collapsed={state.collapsed}
+          collapsible
+          style={siderStyle}
+        >
           <slot name="menu">
-            <Menu />
+            <Menu state={state} items={items} />
           </slot>
         </a-layout-sider>
         <a-layout-content style={contentStyle}>
