@@ -1,14 +1,19 @@
 import type { CSSProperties } from 'vue'
 import { Icon } from '@iconify/vue'
+import Menu from './common/Menu'
 
 export default () => {
   const headerStyle: CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
     textAlign: 'center',
     color: '#fff',
     height: 64,
     paddingInline: 50,
-    lineHeight: '64px',
-    backgroundColor: '#001529'
+    backgroundColor: '#001529',
+    zIndex: 10
   }
 
   const contentStyle: CSSProperties = {
@@ -21,17 +26,11 @@ export default () => {
 
   const siderStyle: CSSProperties = {
     textAlign: 'center',
-    lineHeight: '120px',
     minHeight: '100vh',
     color: '#fff',
     backgroundColor: '#3ba0e9'
   }
 
-  const footerStyle: CSSProperties = {
-    textAlign: 'center',
-    color: '#fff',
-    backgroundColor: '#7dbcea'
-  }
   return (
     <a-layout>
       <a-layout-header style={headerStyle}>
@@ -72,24 +71,25 @@ export default () => {
                 }}
               ></a-avatar>
 
-              <span class={'font-semibold mr-2'}>Admin</span>
+              <span class={'font-semibold mr-2'}>
+                Admin
+              </span>
 
               <a-button>退出登陆</a-button>
             </a-space>
           </a-col>
         </a-row>
       </a-layout-header>
-      <a-layout>
+      <a-layout class={'mt-64px'}>
         <a-layout-sider style={siderStyle}>
-          Sider
+          <slot name="menu">
+            <Menu />
+          </slot>
         </a-layout-sider>
         <a-layout-content style={contentStyle}>
           Content
         </a-layout-content>
       </a-layout>
-      <a-layout-footer style={footerStyle}>
-        Footer
-      </a-layout-footer>
     </a-layout>
   )
 }
