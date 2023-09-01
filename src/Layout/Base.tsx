@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useMenu } from '@/store/menu'
-import Menu from './common/Menu'
+import Menu from './components/Menu'
 
 const headerStyle: CSSProperties = {
   position: 'fixed',
