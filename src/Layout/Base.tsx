@@ -1,6 +1,7 @@
-import type { CSSProperties } from 'vue'
+import { RouterView } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useMenu } from '@/store/menu'
+import type { CSSProperties } from 'vue'
 import Menu from './components/Menu'
 
 const headerStyle: CSSProperties = {
@@ -99,7 +100,7 @@ export default () => {
           </slot>
         </a-layout-sider>
         <a-layout-content style={contentStyle}>
-          Content
+          <RouterView />
         </a-layout-content>
       </a-layout>
     </a-layout>
