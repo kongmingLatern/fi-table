@@ -1,4 +1,3 @@
-import { RouterView } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useMenu } from '@/store/menu'
 import type { CSSProperties } from 'vue'
@@ -21,8 +20,7 @@ const contentStyle: CSSProperties = {
   textAlign: 'center',
   minHeight: 120,
   lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9'
+  backgroundColor: '#f0f0f0'
 }
 
 const siderStyle: CSSProperties = {
@@ -38,71 +36,87 @@ const state = reactive({
   preOpenKeys: ['sub1']
 })
 
-export default () => {
-  const { items } = useMenu(state)
-  return (
-    <a-layout>
-      <a-layout-header style={headerStyle}>
-        <a-row>
-          <a-col
-            span="6"
-            text="20px"
-            align={'center'}
-            font="semibold"
-            bg="transparent"
-          >
-            <span class="flex-center justify-start">
-              <Icon
-                icon="logos:nuxt-icon"
-                class={'mr-2'}
-                width={25}
-                height={25}
-                color="white"
-              />
-              <span>Mysql Manager</span>
-            </span>
-          </a-col>
-          <a-col span="6"></a-col>
-          <a-col span="6"></a-col>
-          <a-col span="6" class="text-right">
-            <a-space>
-              <a-avatar
-                v-slots={{
-                  icon: () => (
-                    <Icon
-                      icon="bxs:user"
-                      class={'mr-2'}
-                      width={25}
-                      height={25}
-                      color="white"
-                    />
-                  )
-                }}
-              ></a-avatar>
-
-              <span class={'font-semibold mr-2'}>
-                Admin
+export default defineComponent({
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props, { slots }) {
+    const { items } = useMenu(state)
+    return () => (
+      <a-layout>
+        <a-layout-header style={headerStyle}>
+          <a-row>
+            <a-col
+              span="6"
+              text="20px"
+              align={'center'}
+              font="semibold"
+              bg="transparent"
+            >
+              <span class="flex-center justify-start truncate">
+                <Icon
+                  icon="logos:nuxt-icon"
+                  class={'mr-2'}
+                  width={25}
+                  height={25}
+                  color="white"
+                />
+                <span>Mysql Manager</span>
               </span>
+            </a-col>
+            <a-col span="6"></a-col>
+            <a-col span="6"></a-col>
+            <a-col span="6" class="text-right">
+              <a-space>
+                <a-avatar
+                  v-slots={{
+                    icon: () => (
+                      <Icon
+                        icon="bxs:user"
+                        class={'mr-2'}
+                        width={25}
+                        height={25}
+                        color="white"
+                      />
+                    )
+                  }}
+                ></a-avatar>
 
-              <a-button>退出登陆</a-button>
-            </a-space>
-          </a-col>
-        </a-row>
-      </a-layout-header>
-      <a-layout class={'mt-64px'}>
-        <a-layout-sider
-          v-model:collapsed={state.collapsed}
-          collapsible
-          style={siderStyle}
-        >
-          <slot name="menu">
-            <Menu state={state} items={items} />
-          </slot>
-        </a-layout-sider>
-        <a-layout-content style={contentStyle}>
-          <RouterView />
-        </a-layout-content>
+                <span class={'font-semibold mr-2'}>
+                  Admin
+                </span>
+
+                <a-button>退出登陆</a-button>
+              </a-space>
+            </a-col>
+          </a-row>
+        </a-layout-header>
+        <a-layout class={'mt-64px'}>
+          <a-layout-sider
+            v-model:collapsed={state.collapsed}
+            collapsible
+            style={siderStyle}
+          >
+            <slot name="menu">
+              <Menu state={state} items={items} />
+            </slot>
+          </a-layout-sider>
+          <a-layout-content style={contentStyle}>
+            <a-layout-header
+              class="text-left flex items-center p-0 pl-10px"
+              style="color: #000;background: #fff;"
+            >
+              <h3 class={'text-20px'}>
+                {props.title || (slots && slots.title?.())}
+              </h3>
+            </a-layout-header>
+            {slots && slots.default?.()}
+          </a-layout-content>
+        </a-layout>
       </a-layout>
-    </a-layout>
-  )
-}
+    )
+  }
+})

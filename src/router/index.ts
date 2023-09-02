@@ -8,12 +8,11 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/home',
-    component: () => import('@/layout/Base'),
     children: [
       {
         name: 'home',
         path: 'home',
-        component: () => import('@/layout/Home')
+        component: () => import('@/modules/BD/Home')
       }
     ]
   }
