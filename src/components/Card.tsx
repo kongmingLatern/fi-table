@@ -4,7 +4,7 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: '标题'
+      default: ''
     },
     cardOptions: {
       type: Object,
@@ -21,7 +21,7 @@ export default defineComponent({
         ),
 
       extra: () =>
-        (slots && slots.extra?.()) || <a href="#">more</a>,
+        (slots && slots.extra?.()),
 
       cover: () => slots && slots.cover?.(),
 
