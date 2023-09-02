@@ -5,6 +5,7 @@ import Antd from 'ant-design-vue'
 import router from './router'
 import 'ant-design-vue/dist/reset.css'
 import 'uno.css'
+import '@/assets/global.css'
 
 createApp(App)
   .use(Antd)
